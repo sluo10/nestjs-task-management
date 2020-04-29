@@ -20,6 +20,10 @@ const bootstrap = async () => {
   const logger = new Logger('bootstrap');
   const app: INestApplication = await NestFactory.create(AppModule);
 
+  if (process.env.NODE_ENV === 'development') {
+    app.enableCors();
+  }
+
   swaggerSetup(app);
 
   const port = process.env.PORT || serverConfig.port;
