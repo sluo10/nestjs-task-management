@@ -13,7 +13,7 @@ const swaggerSetup = (app: INestApplication) => {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
-}
+};
 
 const bootstrap = async () => {
   const serverConfig = config.get('server');
@@ -24,7 +24,7 @@ const bootstrap = async () => {
     app.enableCors();
   } else {
     app.enableCors({ origin: serverConfig.origin });
-    logger.log(`Accepting requests from origin ${serverConfig.origin}.`)
+    logger.log(`Accepting requests from origin ${serverConfig.origin}.`);
   }
 
   swaggerSetup(app);
@@ -32,6 +32,6 @@ const bootstrap = async () => {
   const port = process.env.PORT || serverConfig.port;
   await app.listen(port);
   logger.log(`Application listening on port ${port}`);
-}
+};
 
 bootstrap();
