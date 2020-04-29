@@ -1,2 +1,5 @@
+server:
+  origin: website-domain
+
 db:
   synchronize: false
